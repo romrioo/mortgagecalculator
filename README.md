@@ -2,6 +2,8 @@
 
 Written in JS and Bulma CSS.
 
+![Screenshot](demo.png)
+
 I have a highly detailed mortgage calculator excel spreadsheet that I built when I was looking to purchase my first home. 
 
 The spreadsheet acts as a guide, and makes you aware of how easily interest adds up, how important the down payment is, and how any additional monthly payments affects the duration of the loan and lowers your interest payment. Of course we're all aware of these things, but when you crunch the data and see the numbers in front of you it affects your behavior and subconsciously encourages you to make additional payments to your house. 
@@ -20,4 +22,4 @@ My goal is to convert that spreadsheet into a web app.
 
 Total savings can be significant, even with as little as an extra $50/month. 
 
-That is what I want to show on this web app.
+That is what I want to show on this web app. 
