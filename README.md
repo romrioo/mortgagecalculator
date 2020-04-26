@@ -2,6 +2,8 @@
 
 Written in JS and Bulma CSS.
 
+<a href="https://romariojashari.github.io/mortgagecalculator/" target="blank">View Live</a>
+
 ![Screenshot](demo.png)
 
 I have a highly detailed mortgage calculator excel spreadsheet that I built when I was looking to purchase my first home. 
