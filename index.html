@@ -183,74 +183,36 @@
                 }
         </style>
         <section class="section">
-            <h1 class="title has-text-success has-text-centered has-text-weight-semibold">Amortization Table</h1>
-            <table class="table is-centered is-striped">
+            <h1 class="title has-text-centered has-text-weight-semibold">Amortization Table</h1>
+            <table id="loandata" class="table is-centered is-striped">
                 <thead>
                   <tr>
-                    <th><abbr title="tyear">Year</abbr></th>
-                    <th><abbr title="tmonth">Month</abbr></th>
-                    <th><abbr title="tstartbal">Starting Balance</abbr></th>
-                    <th><abbr title="tmpmt">Monthly Payment</abbr></th>
-                    <th><abbr title="tinterest">Interest</abbr></th>
-                    <th><abbr title="tpinterest">% Interest</abbr></th>
-                    <th><abbr title="tprincipal">Principal</abbr></th>
-                    <th><abbr title="tendingbal">Ending Balance</abbr></th>
-                    <th><abbr title="tequity">Equity</abbr></th>
-                    <th><abbr title="tpequity">% Equity</abbr></th>
+                    <th><abbr>Payment #</abbr></th>
+                    <th><abbr>Starting Balance</abbr></th>
+                    <th><abbr>Monthly Payment</abbr></th>
+                    <th><abbr>Interest</abbr></th>
+                    <th><abbr>Principal</abbr></th>
+                    <th><abbr>Equity</abbr></th>
+                    <th><abbr>% Equity</abbr></th>
                   </tr>
                 </thead>
+
                 <tfoot>
-                  <tr>
-                    <th><abbr title="tyear">Year</abbr></th>
-                    <th><abbr title="tmonth">Month</abbr></th>
-                    <th><abbr title="tstartbal">Starting Balance</abbr></th>
-                    <th><abbr title="tmpmt">Monthly Payment</abbr></th>
-                    <th><abbr title="tinterest">Interest</abbr></th>
-                    <th><abbr title="tpinterest">% Interest</abbr></th>
-                    <th><abbr title="tprincipal">Principal</abbr></th>
-                    <th><abbr title="tendingbal">Ending Balance</abbr></th>
-                    <th><abbr title="tequity">Equity</abbr></th>
-                    <th><abbr title="tpequity">% Equity</abbr></th>
-                  </tr>
+                    <tr>
+                        <th><abbr>Payment #</abbr></th>
+                        <th><abbr>Starting Balance</abbr></th>
+                        <th><abbr>Monthly Payment</abbr></th>
+                        <th><abbr>Interest</abbr></th>
+                        <th><abbr>Principal</abbr></th>
+                        <th><abbr>Equity</abbr></th>
+                        <th><abbr>% Equity</abbr></th>
+                      </tr>
                 </tfoot>
-                <tbody>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr class="">
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>                 
-                </tbody>
+                -->
+            
+                <tbody id="tbody" class="text-is-centered">
+                    <!--Generate table from JavaScript.-->
+                </tbody> 
               </table>
         </section>
     </body>
