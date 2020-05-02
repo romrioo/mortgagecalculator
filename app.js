@@ -16,38 +16,44 @@ function calculate(e) {
 
     // Calculate Monthly Payment
     const pmt =  (p*r) * Math.pow((1+r),n) / (Math.pow((1+r),n) - 1); // Formula for calculating monthly payment.
-    const monthlyPayment = pmt.toFixed(2); // 2 decimal digits. $xxx.xx
-
+ 
     //Compute Total Payment
     const totalPayment = pmt * n; // Total payback, includes interest.
+    
+    // Calculate Just Interest
+    const justInterest = totalPayment - p;
 
     // Show Results
-    document.getElementById("monthlyPayment").innerHTML = "$" + monthlyPayment.toLocaleString();
-    document.getElementById("loanAmount").innerHTML = "$" + p.toLocaleString();
-    document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
+    document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
+    document.getElementById("loanAmount").innerHTML = "$" + p.toLocaleString(undefined, {maximumFractionDigits: 0});
+    document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {maximumFractionDigits: 0});
+    document.getElementById("justInterest").innerHTML = "$" + justInterest.toLocaleString(undefined, {maximumFractionDigits: 0});
 
     // Adds row to the body of the table. To be continued...
     // var newRow=document.getElementById('tbody').insertRow();
     // newRow.innerHTML = "<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>";
 
-    var currentBalance = p; // p is the principle which is the amount of money borrowed. 
-    var paymentCounter = 1;
-    var totalInterest = 0;
-    var towardsEquity = downPayment;
+    let currentBalance = p; // p is the principle which is the amount of money borrowed. 
+    let paymentCounter = 1;
+    let totalInterest = 0;
+    let towardsEquity = downPayment;
 
     while(currentBalance > 0) {
         towardsInterest = r*currentBalance; // Calculates interest in monthly payment.
         towardsPrinciple = pmt /*monthly payment*/ - towardsInterest;
-        currentBalance -= towardsPrinciple;
+        currentBalance -= towardsPrinciple; // currentBalance is the mount of money you still owe. 
         towardsEquity += towardsPrinciple;
         percentEquity = towardsEquity/purchasePrice*100;
-
+        
         // Display row
-        var newRow=document.getElementById('tbody').insertRow();
-        newRow.innerHTML = "<td>"+paymentCounter+"</td><td>$"+currentBalance.toFixed(2)+"</td><td>$"+monthlyPayment+"</td><td>$"+towardsInterest.toFixed(2)+"</td><td>$"+towardsPrinciple.toFixed(2)+"</td><td>"+towardsEquity.toFixed(2)+"</td><td>"+percentEquity.toFixed(2)+" %</td>";
+        let newRow=document.getElementById('tbody').insertRow();
+        newRow.innerHTML = "<td><center>"+paymentCounter.toLocaleString()+"</center></td><td><center>$"+
+        pmt.toLocaleString(undefined, {minimumFractionDigits: 2,maximumFractionDigits: 2})+"</center></td><td><center>$"+
+        towardsInterest.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>$"+
+        towardsPrinciple.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>$"+
+        towardsEquity.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>"+
+        percentEquity.toLocaleString(undefined, {maximumFractionDigits: 0})+" %</center></td><td><center>$"+
+        currentBalance.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td>";
 
         paymentCounter++;
 

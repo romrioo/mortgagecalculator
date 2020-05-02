@@ -8,22 +8,24 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
     
+    <!-- Next update: Still need to 1. fix drop down for down payment. 2. Make table appear after clicking "Crunch the numbers" 3. Make table header sticky to scrolling. -->
+    
     <body>
         <!-- Loan Form Section -->
-        <section class="section">
+        <section class="section is-flex-mobile">
             <div class="container">
                 <div class="content">
                 <h1 class="title has-text-centered">Simple Mortgage Calculator</h1>
                     <p class="has-text-centered">The internet's most simple, yet profound mortgage calculator!</p>
                 </div>
-                <div class="columns is-centered">
-                    <div class="column is-8">
+                <div class="columns is-centered is-flex is-flex-mobile">
+                    <div class="column is-10">
                         <div class="card">
                             <div class="card-content">
                                 <form id="input-loan">
                                     <div class="level">
                                         <!-- left side -->
-                                        <div class="level-left is marginless">
+                                        <div class="level-left is-flex-mobile is marginless">
                                             <div class="level-item">
                                                 <span class="number">
                                                     <i class="fas fa-home"></i>
@@ -32,10 +34,10 @@
                                             </div>
                                         </div>
                                         <!-- right side -->
-                                        <div class="level-right">
+                                        <div class="level">
                                             <div class="level-item">
                                                 <div class="field">
-                                                    <div class="control has-icons-left has-icons-right">
+                                                    <div class="control has-icons-left has-icons-right ">
                                                         <input class="input" type="number" id="purchasePrice" placeholder="Purchase Price">
                                                         <span class="icon is-left">
                                                             <i class="fa fa-dollar-sign"></i>
@@ -51,7 +53,7 @@
 
                                     <div class="level">
                                         <!-- left side -->
-                                        <div class="level-left is marginless">
+                                        <div class="level-left is-flex-mobile is marginless">
                                             <div class="level-item">
                                                 <span class="number">
                                                     <i class="fas fa-dollar-sign"></i>
@@ -81,7 +83,7 @@
 
                                     <div class="level">
                                         <!-- left side -->
-                                        <div class="level-left is marginless">
+                                        <div class="level-left is-flex-mobile is marginless">
                                             <div class="level-item">
                                                 <span class="number">
                                                     <i class="fas fa-percentage"></i>
@@ -109,7 +111,7 @@
 
                                     <div class="level">
                                         <!-- left side -->
-                                        <div class="level-left is marginless">
+                                        <div class="level-left is-flex-mobile is marginless">
                                             <div class="level-item">
                                                 <span class="number">
                                                     <i class="fas fa-calendar-alt"></i>
@@ -135,9 +137,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="field is-grouped is-grouped-right">
+                                    <div class="field is-grouped is-grouped-centered ">
                                         <div class="control">
-                                            <button class="button is-medium is-danger is-outlined">Crunch the numbers!
+                                            <button class="button is-medium is-info is-primary ">Crunch the numbers!
                                             </button>
                                         </div>
                                     </div>
@@ -151,24 +153,30 @@
         <!-- Results Section -->
         <section class="section">
             <div class="container">
-                <h1 class="title has-text-info has-text-centered">Results</h1>
+                <h1 class="title  has-text-centered has-text-weight-bold">Results</h1>
                 <div class="columns is-multiline is-centered">
                     <div class="column is-narrow">
                         <div class="notification is-info has-text">
-                            <p id="monthlyPayment" class="title is-1">$</p>
-                            <p class="subtitle is-4">Monthly Payment</p>
+                            <p id="monthlyPayment" class="title is-3">$</p>
+                            <p class="subtitle is-6">Monthly Payment</p>
                         </div>
                     </div>
                     <div class="column is-narrow">
                         <div class="notification is-info has-text">
-                            <p id="loanAmount" class="title is-1">%</p>
-                            <p class="subtitle is-4">Loan Amount</p>
+                            <p id="loanAmount" class="title is-3">%</p>
+                            <p class="subtitle is-6">Loan Amount</p>
                         </div>
                     </div>
                     <div class="column is-narrow">
                         <div class="notification is-info has-text">
-                            <p id="totalPayment" class="title is-1">$</p>
-                            <p class="subtitle is-4">Total Paid After Interest</p>
+                            <p id="totalPayment" class="title is-3">$</p>
+                            <p class="subtitle is-6">Total Paid</p>
+                        </div>
+                    </div>
+                    <div class="column is-narrow">
+                            <div class="notification is-info has-text">
+                            <p id="justInterest" class="title is-3">$</p>
+                        <p class="subtitle is-6">Just Interest</p>
                         </div>
                     </div>
                 </div>
@@ -177,40 +185,38 @@
 
         <!-- Amortization Table -->
         <style>
-            .table {
-                margin-left: auto;
-                margin-right: auto;
-                }
+            .table {margin: auto;}
+            .thead {position: sticky;}
         </style>
         <section class="section">
-            <h1 class="title has-text-centered has-text-weight-semibold">Amortization Table</h1>
-            <table id="loandata" class="table is-centered is-striped">
+            <h1 class="title has-text-centered has-text-weight-bold">Amortization Table</h1>
+            <table id="loandata" class="table is-narrow is-bordered table is-hoverable">
                 <thead>
                   <tr>
                     <th><abbr>Payment #</abbr></th>
-                    <th><abbr>Starting Balance</abbr></th>
                     <th><abbr>Monthly Payment</abbr></th>
                     <th><abbr>Interest</abbr></th>
                     <th><abbr>Principal</abbr></th>
                     <th><abbr>Equity</abbr></th>
                     <th><abbr>% Equity</abbr></th>
+                    <th><abbr>Balance</abbr></th>
                   </tr>
                 </thead>
 
                 <tfoot>
                     <tr>
                         <th><abbr>Payment #</abbr></th>
-                        <th><abbr>Starting Balance</abbr></th>
                         <th><abbr>Monthly Payment</abbr></th>
                         <th><abbr>Interest</abbr></th>
                         <th><abbr>Principal</abbr></th>
                         <th><abbr>Equity</abbr></th>
                         <th><abbr>% Equity</abbr></th>
+                        <th><abbr>Balance</abbr></th>
                       </tr>
                 </tfoot>
-                -->
+                
             
-                <tbody id="tbody" class="text-is-centered">
+                <tbody id="tbody" class="justify-content: center">
                     <!--Generate table from JavaScript.-->
                 </tbody> 
               </table>
