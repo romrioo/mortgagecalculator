@@ -30,9 +30,10 @@ function calculate(e) {
     document.getElementById("downP").innerHTML = (percentDown*100).toFixed(1) + " %";
     
     // Calculate Private Mortgage Insurance = PMI
-    const PMI = purchasePrice * .008 / 12 // $190,000 * 0.8% / 12 = $126.66 (or $1,520/year). The 0.8% is coming from research as a rule of thumb that PMI costs roughly 0.5% - 1% of total loan.
+    const PMI = p * .008 / 12 // $190,000 * 0.8% / 12 = $126.66 (or $1,520/year). The 0.8% is coming from research as a rule of thumb that PMI costs roughly 0.5% - 1% of total loan.
     // This single formula explains why you should always put 20% down, otherwise you're spending your money away on useless things.
-       
+    
+    
     function pmtAfterPMI() {
         let newMonthlyTotal;
         if (percentDown < 0.2) {
@@ -40,9 +41,8 @@ function calculate(e) {
         } else {
           newMonthlyTotal = pmt;
         }
-
-        document.getElementById("pmi").innerHTML = "$ " + PMI.toFixed(2);
-        document.getElementById("pmiPlusMonthlyPayment").innerHTML = "$ " + newMonthlyTotal.toFixed(2);
+        document.getElementById("pmi").innerHTML = "$ " + PMI.toLocaleString(undefined, {maximumFractionDigits: 0});
+        document.getElementById("pmiPlusMonthlyPayment").innerHTML = "$ " + newMonthlyTotal.toLocaleString(undefined, {maximumFractionDigits: 0});
     }    
 
     pmtAfterPMI(percentDown) // Calling funciton otherwise it won't run. 
