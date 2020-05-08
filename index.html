@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125389001-3"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-125389001-3');
+        </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simple Mortgage Calculator</title>
@@ -139,7 +148,7 @@
 
                                     <div class="field is-grouped is-grouped-centered ">
                                         <div class="control">
-                                            <button class="button is-medium is-info is-primary ">Crunch the numbers!
+                                            <button id="crunch" onclick="clearTable();" class="button is-medium is-info is-primary ">Crunch the numbers!
                                             </button>
                                         </div>
                                     </div>
@@ -154,6 +163,12 @@
         <section class="section">
             <div class="container">
                 <h1 class="title  has-text-centered has-text-weight-bold">Results</h1>
+                <p class="has-text-weight-medium  has-text-centered">If you put 20% down, you do not have to pay Private Mortgage Insurance (PMI). <br> If however, like most of us, you don't put 20% down, you are required to pay PMI.</p>
+                <br>
+                <p class="has-text-weight-medium has-text-centered">Percent Down = <span id="downP"></span></p>
+                <p class="has-text-weight-medium has-text-centered">PMI = <span id="pmi"></span></p>
+                <p class="has-text-weight-medium has-text-centered">Monthly Payment + PMI = <span id="pmiPlusMonthlyPayment"></span></p>
+                <br>
                 <div class="columns is-multiline is-centered">
                     <div class="column is-narrow">
                         <div class="notification is-info has-text">
@@ -182,16 +197,22 @@
                 </div>
             </div>
         </section>
-
+        <!--<section>
+            <div style="padding:0; position:absolute; margin:5px 50em;">
+                <input type="button" onclick="hideDisplayHide()" value="Show/Hide Table">
+            </div>
+        </section>-->
         <!-- Amortization Table -->
         <style>
             .table {margin: auto;}
             .thead {position: sticky;}
         </style>
-        <section class="section">
+        <section id="amortizationTable" class="section">
+            
             <h1 class="title has-text-centered has-text-weight-bold">Amortization Table</h1>
+                
             <table id="loandata" class="table is-narrow is-bordered table is-hoverable">
-                <thead>
+                <thead id="thead">
                   <tr>
                     <th><abbr>Payment #</abbr></th>
                     <th><abbr>Monthly Payment</abbr></th>
@@ -204,7 +225,7 @@
                 </thead>
 
                 <tfoot>
-                    <tr>
+                    <!--<tr>
                         <th><abbr>Payment #</abbr></th>
                         <th><abbr>Monthly Payment</abbr></th>
                         <th><abbr>Interest</abbr></th>
@@ -212,7 +233,7 @@
                         <th><abbr>Equity</abbr></th>
                         <th><abbr>% Equity</abbr></th>
                         <th><abbr>Balance</abbr></th>
-                      </tr>
+                      </tr>-->
                 </tfoot>
                 
             
