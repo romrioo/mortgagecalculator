@@ -13,9 +13,9 @@ The spreadsheet acts as a guide, and makes you aware of how easily interest adds
 My goal is to convert that spreadsheet into a web app. 
 
 ## Coming Soon
-1. Total Interest Paid
-2. Total Paid
-3. Percent Interest Paid
+1. ~~Total Interest Paid~~
+2. ~~Total Paid~~
+3. ~~Percent Interest Paid~~
 4. If you did not put 20% down, after how many months will you reach 22% equity? (22% equity is required to stop paying PMI (private mortgage insurance = pointless))
 5. If down payment is less then 20%, what is my PMI?
 6. Additional Payment Input Amount
