@@ -49,6 +49,7 @@ function calculate(e) {
 
     // Show Results
     document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
+    document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("loanAmount").innerHTML = "$" + p.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("justInterest").innerHTML = "$" + justInterest.toLocaleString(undefined, {maximumFractionDigits: 0});
