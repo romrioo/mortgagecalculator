@@ -1,267 +1,340 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125389001-3"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-125389001-3');
-        </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125389001-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-125389001-3');
+  </script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple Mortgage Calculator</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    </head>
-    
-    <!-- Next update: Still need to 1. fix drop down for down payment. 2. Make table appear after clicking "Crunch the numbers" 3. Make table header sticky to scrolling. -->
-    
-    <body>
-        <!-- Loan Form Section -->
-        <section class="section is-flex-mobile">
-            <div class="container">
-                <div class="content">
-                <h1 class="title has-text-centered">Simple Mortgage Calculator</h1>
-                    <p class="has-text-centered">The internet's most simple, yet profound mortgage calculator!</p>
-                </div>
-                <div class="columns is-centered is-flex is-flex-mobile">
-                    <div class="column is-10">
-                        <div class="card">
-                            <div class="card-content">
-                                <form id="input-loan">
-                                    <div class="level">
-                                        <!-- left side -->
-                                        <div class="level-left is-flex-mobile is marginless">
-                                            <div class="level-item">
-                                                <span class="number">
-                                                    <i class="fas fa-home"></i>
-                                                </span>
-                                                Purchase Price
-                                            </div>
-                                        </div>
-                                        <!-- right side -->
-                                        <div class="level">
-                                            <div class="level-item">
-                                                <div class="field">
-                                                    <div class="control has-icons-left has-icons-right ">
-                                                        <input class="input" type="number" id="purchasePrice" placeholder="Purchase Price">
-                                                        <span class="icon is-left">
-                                                            <i class="fa fa-dollar-sign"></i>
-                                                        </span>
-                                                        <span class="icon is-right">
-                                                            <i class="fa fa-check"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Mortgage Calculator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
 
-                                    <div class="level">
-                                        <!-- left side -->
-                                        <div class="level-left is-flex-mobile is marginless">
-                                            <div class="level-item">
-                                                <span class="number">
-                                                    <i class="fas fa-dollar-sign"></i>
-                                                </span>
-                                                Down Payment
-                                            </div>
-                                        </div>
-                                        <!-- right side -->
-                                        <div class="level-right">
-                                            <div class="level-item">
-                                                <div class="field has-addons">
-                                                    <span class="select">
-                                                        <select>
-                                                            <option>$</option>
-                                                        </select>
-                                                    </span>
-                                                    <div class="control has-icons-right">
-                                                        <input class="input" type="number" id="downPayment" placeholder="Down Payment">
-                                                        <span class="icon is-right">
-                                                            <i class="fa fa-check"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="level">
-                                        <!-- left side -->
-                                        <div class="level-left is-flex-mobile is marginless">
-                                            <div class="level-item">
-                                                <span class="number">
-                                                    <i class="fas fa-percentage"></i>
-                                                </span>
-                                                Interest Rate
-                                            </div>
-                                        </div>
-                                        <!-- right side -->
-                                        <div class="level-right">
-                                            <div class="level-item">
-                                                <div class="field">
-                                                    <div class="control has-icons-left has-icons-right">
-                                                        <input class="input" type="text" id="interestRate" placeholder="Interest Rate">
-                                                        <span class="icon is-left">
-                                                            <i class="fa fa-percentage"></i>
-                                                        </span>
-                                                        <span class="icon is-right">
-                                                            <i class="fa fa-check"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="level">
-                                        <!-- left side -->
-                                        <div class="level-left is-flex-mobile is marginless">
-                                            <div class="level-item">
-                                                <span class="number">
-                                                    <i class="fas fa-calendar-alt"></i>
-                                                </span>
-                                                Loan Term (i.e. 15 or 30 years)
-                                            </div>
-                                        </div>
-                                        <!-- right side -->
-                                        <div class="level-right">
-                                            <div class="level-item">
-                                                <div class="field">
-                                                    <div class="control has-icons-left has-icons-right">
-                                                        <input class="input" type="number" id="loanTerm" placeholder="Loan Term">
-                                                        <span class="icon is-left">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </span>
-                                                        <span class="icon is-right">
-                                                            <i class="fa fa-check"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="field is-grouped is-grouped-centered ">
-                                        <div class="control">
-                                            <button id="crunch" onclick="clearTable();" class="button is-medium is-info is-primary ">Crunch the numbers!
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Results Section -->
-        <section class="section">
-            <div class="container">
-                <h1 class="title  has-text-centered has-text-weight-bold">Results</h1>
-                <p class="has-text-weight-normal  has-text-centered">If you put 20% down, you do not have to pay Private Mortgage Insurance (PMI). <br> If however, like most of us, you don't put 20% down, you are required to pay PMI.</p>
-                <br>
-                <p class="has-text-weight-normal has-text-centered">If you have an FHA loan, you're bound to pay this PMI monthly payment until the end of your loan. That's a lot of money = PMI * 360 (for a regular 30 year loan). </p>
-                <p class="has-text-weight-normal has-text-centered">If you have regular mortgage (which I'd recommend), you're not responsible for PMI after owning 22% equity. For the average person this takes 7 years to achieve. Do you want to be paying PMI for 7 years?? NOPE</p>
-                <p class="has-text-weight-normal has-text-centered">Scroll down the Amortization table to find out when your scenario would reach 22% equity.</p>
-                <br>
-                <p class="has-text-weight-medium has-text-centered">Percent Down = <span id="downP"></span></p>
-                <p class="has-text-weight-medium has-text-centered">PMI per month = <span id="pmi"></span></p>
-                <p class="has-text-weight-medium has-text-centered">Monthly Payment (look below) + PMI = <span id="pmiPlusMonthlyPayment"></span></p>
-                <br>
-                <div class="columns is-multiline is-centered">
-                    <div class="column is-narrow">
-                        <div class="notification is-info has-text">
-                            <p id="monthlyPayment" class="title is-3">$</p>
-                            <p class="subtitle is-6">Monthly Payment</p>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                        <div class="notification is-info has-text">
-                            <p id="loanAmount" class="title is-3">%</p>
-                            <p class="subtitle is-6">Loan Amount</p>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                        <div class="notification is-info has-text">
-                            <p id="totalPayment" class="title is-3">$</p>
-                            <p class="subtitle is-6">Total Paid</p>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                            <div class="notification is-info has-text">
-                            <p id="justInterest" class="title is-3">$</p>
-                        <p class="subtitle is-6">Just Interest</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="has-text-weight-normal has-text-centered">KEEP IN MIND, that your monthly payment increases after adding Home Owners Insurance (HOI), HOA (Homeowner Associations) and CDD (Community Development District).</p>
-                <p class="has-text-weight-normal has-text-centered">Avoid PMI, HOA and CDD if you can. </p>
-                <p class="has-text-weight-medium has-text-centered">My point is, the monthly payment this calculator spits out, is the minimum you'll be paying.</p>
-                <p class="has-text-weight-medium has-text-centered">Hope I have been of assistance while you're going through this stressful period, if you have any questions <a href="mailto:rxjash@gmail.com">shoot me an email.</a> - Romario </p>
-            </div>
-        </section>
-        <!--<section>
-            <div style="padding:0; position:absolute; margin:5px 50em;">
-                <input type="button" onclick="hideDisplayHide()" value="Show/Hide Table">
-            </div>
-        </section>-->
-        <!-- Amortization Table -->
-        <style>
-            .table {margin: auto;}
-            .thead {position: sticky;}
-        </style>
-        <section id="amortizationTable" class="section">
-            
-            <h1 class="title has-text-centered has-text-weight-bold">Amortization Table</h1>
-                
-            <table id="loandata" class="table is-narrow is-bordered table is-hoverable">
-                <thead id="thead">
-                  <tr>
-                    <th><abbr>Payment #</abbr></th>
-                    <th><abbr>Monthly Payment</abbr></th>
-                    <th><abbr>Interest</abbr></th>
-                    <th><abbr>Principal</abbr></th>
-                    <th><abbr>Equity</abbr></th>
-                    <th><abbr>% Equity</abbr></th>
-                    <th><abbr>Balance</abbr></th>
-                  </tr>
-                </thead>
-
-                <tfoot>
-                    <!--<tr>
-                        <th><abbr>Payment #</abbr></th>
-                        <th><abbr>Monthly Payment</abbr></th>
-                        <th><abbr>Interest</abbr></th>
-                        <th><abbr>Principal</abbr></th>
-                        <th><abbr>Equity</abbr></th>
-                        <th><abbr>% Equity</abbr></th>
-                        <th><abbr>Balance</abbr></th>
-                      </tr>-->
-                </tfoot>
-                
-            
-                <tbody id="tbody" class="justify-content: center">
-                    <!--Generate table from JavaScript.-->
-                </tbody> 
-              </table>
-        </section>
-    </body>
-
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong></strong>Developed by <a href="https://romar.io" target="_blank">Romario Jashari</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-        </p>
+<body>
+  <!-- Loan Form Section -->
+  <section class="section is-flex-mobile">
+    <div class="container">
+      <div class="content">
+       <h1 class="title has-text-centered">Simple Mortgage Calculator</h1>
+       <p class="has-text-centered">The internet's most simple, yet profound mortgage calculator!</p>
       </div>
-    </footer>
-    
-    <script src="app.js"></script>
-    
+      <div class="columns is-centered is-flex is-flex-mobile">
+        <div class="column is-7">
+          <div class="box notification is-radiusless is-shadowless">
+           <div class="box-content">
+              <form id="input-loan">
+                <div class="level">
+                  <!-- left side -->
+                  <div class="level-left is-flex-mobile is marginless">
+                    <div class="level-item">
+                      <span class="number">
+                        <i class="fas fa-home"></i>
+                      </span>
+                      Purchase Price
+                    </div>
+                  </div>
+                  <!-- right side -->
+                  <div class="level">
+                    <div class="level-item">
+                      <div class="field">
+                        <div class="control has-icons-left has-icons-right ">
+                          <input class="input" type="number" id="purchasePrice" placeholder="Purchase Price">
+                            <span class="icon is-left">
+                              <i class="fa fa-dollar-sign"></i>
+                            </span>
+                            <span class="icon is-right">
+                            <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="level">
+                  <!-- left side -->
+                  <div class="level-left is-flex-mobile is marginless">
+                    <div class="level-item">
+                      <span class="number">
+                        <i class="fas fa-dollar-sign"></i>
+                      </span>
+                      Down Payment
+                    </div>
+                  </div>
+                  <!-- right side -->
+                  <div class="level">
+                    <div class="level-item">
+                      <div class="field">
+                        <div class="control has-icons-left has-icons-right ">
+                          <input class="input" type="number" id="downPayment" placeholder="Down Payment">
+                            <span class="icon is-left">
+                              <i class="fa fa-dollar-sign"></i>
+                            </span>
+                            <span class="icon is-right">
+                            <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="level">
+                  <!-- left side -->
+                  <div class="level-left is-flex-mobile is marginless">
+                    <div class="level-item">
+                      <span class="number">
+                        <i class="fas fa-percentage"></i>
+                      </span>
+                    </span>
+                    Interest Rate
+                    </div>
+                  </div>
+                  <!-- right side -->
+                  <div class="level">
+                    <div class="level-item">
+                      <div class="field">
+                        <div class="control has-icons-left has-icons-right ">
+                          <input class="input" type="number" id="interestRate" placeholder="Interest Rate">
+                            <span class="icon is-left">
+                              <i class="fa fa-percentage"i></i>
+                            </span>
+                            <span class="icon is-right">
+                            <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="level">
+                  <!-- left side -->
+                  <div class="level-left is-flex-mobile is marginless">
+                    <div class="level-item">
+                      <span class="number">
+                        <i class="fas fa-calendar-alt"></i>
+                      </span>
+                    </span>
+                    Loan Term
+                    </div>
+                  </div>
+                  <!-- right side -->
+                  <div class="level">
+                    <div class="level-item">
+                      <div class="field">
+                        <div class="control has-icons-left has-icons-right ">
+                          <input class="input" type="number" id="loanTerm" placeholder="Loan Term">
+                            <p class="help has-text-right">(in years)</p>
+                            <span class="icon is-left">
+                              <i class="fa fa-calendar"i></i>
+                            </span>
+                            <span class="icon is-right">
+                            <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-grouped is-grouped-centered ">
+                  <div class="control">
+                    <button id="crunch" onclick="clearTable();" class="button is-inverted has-background-white has-text-black is-medium ">Crunch the numbers!</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        <h2 class="subtitle is-3 has-text-centered">Results</h2>
+        <p class="has-text-centered">Results proof checked with multiple outside sources.</p>
+      </div>
+      <div class="columns is-multiline is-centered">
+        <div class="column is-2 is-centered">
+          <div class="notification has-text-centered">
+            <p id="downP" class="title is-3">$</p>
+            <p class="subtitle is-6">Percent Down</p>
+          </div>
+        </div>
+        <div class="column is-2">
+          <div class="notification has-text-centered">
+            <p id="twentyPercentDown" class="title is-3">$</p>
+            <p class="subtitle is-6">20% Down Amount</p>
+          </div>
+        </div>
+        <div class="column is-2">
+          <div class="notification has-text-centered">
+            <p id="loanAmount" class="title is-3">$</p>
+            <p class="subtitle is-6">Loan Amount</p>
+          </div>
+        </div>
+        <div class="column is-2">
+          <div class="notification has-text-centered">
+            <p id="monthlyPayment" class="title is-3">$</p>
+            <p class="subtitle is-6">Monthly Payment</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-5">
+          <h2 class="subtitle is-5 has-text-centered">Regular Payments</h2>
+          <div class="box is-shadowless">
+            <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
+              <tbody>
+                <tr>
+                  <th>Payoff Time (months)</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Sum Interest</th>
+                  <td><p id="justInterest" class="is-3">$</p></td>
+                </tr>
+                <tr>
+                  <th>Percent Interest Paid</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Total Paid</th>
+                  <td><p id="totalPayment" class="is-3">$</p></td>
+                </tr>
+                <tr>
+                  <th>Will Reach 22% Equity at</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Will have a monthly PMI of</th>
+                  <td><span id="pmi">$</span>/month</td>
+                </tr>
+                <tr class="is-selected">
+                  <th>Total Monthly Payment</th>
+                  <td><span id="pmiPlusMonthlyPayment">$</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="column is-5">
+          <h2 class="subtitle is-5 has-text-centered">Additional Payments</h2>
+          <div class="box is-shadowless">
+            <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
+              <tbody>
+                <tr>
+                  <th>Additional Payment Amount</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Payoff Time (months)</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Total Towards Interest</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Total Towards Principal</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Total Paid</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>% of Total Towards Interest</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Will Reach 22% Equity at</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Will have a total of PMI</th>
+                  <td>coming soon</td>
+                </tr>
+                <tr class="is-selected">
+                  <th>Total Monthly Payment</th>
+                  <td><span id=""></span>coming soon</td>
+                </tr>
+                <tr>
+                  <th>Total Savings</th>
+                  <td>coming soon</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-7">
+          <div id="amortizationTable" class="section">
+            <h2 class="title is-5 has-text-centered">Regular Payment Amortization Schedule</h2>            
+            <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
+              <thead id="thead">
+                <tr>
+                  <th><abbr>Payment #</abbr></th>
+                  <th><abbr>Monthly Payment</abbr></th>
+                  <th><abbr>Interest</abbr></th>
+                  <th><abbr>Principal</abbr></th>
+                  <th><abbr>Equity</abbr></th>
+                  <th><abbr>% Equity</abbr></th>
+                  <th><abbr>Balance</abbr></th>
+                </tr>
+              </thead>
+              <tbody id="tbody" class="justify-content: center">
+                <!--Generate table from JavaScript.-->
+              </tbody> 
+            </table>
+          </div>
+        </div>
+        <div class="column is-7">
+          <div id="####" class="section">
+            <h2 class="title is-5 has-text-centered">Additional Payment Amortization Schedule</h2>            
+            <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
+              <thead id="thead">
+                <tr>
+                  <th><abbr>Payment #</abbr></th>
+                  <th><abbr>Monthly Payment</abbr></th>
+                  <th><abbr>Interest</abbr></th>
+                  <th><abbr>Principal</abbr></th>
+                  <th><abbr>Equity</abbr></th>
+                  <th><abbr>% Equity</abbr></th>
+                  <th><abbr>Balance</abbr></th>
+                </tr>
+              </thead>
+              <tbody id="tbody" class="justify-content: center">
+                <!--Generate table from JavaScript.-->
+              </tbody> 
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong></strong>Developed by <a href="https://romar.io" target="_blank">Romario Jashari</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+
 </html>

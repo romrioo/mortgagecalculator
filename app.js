@@ -27,7 +27,8 @@ function calculate(e) {
 
     // Calculate Percent Down or Equity
     const percentDown = downPayment / purchasePrice; // $0 divided by $190,000 = $0
-    document.getElementById("downP").innerHTML = (percentDown*100).toFixed(1) + " %";
+    document.getElementById("downP").innerHTML = (percentDown*100).toFixed() + " %";
+    document.getElementById("twentyPercentDown").innerHTML = "$" + (purchasePrice*0.2).toLocaleString(undefined, {maximumFractionDigits: 0});
     
     // Calculate Private Mortgage Insurance = PMI
     const PMI = p * .008 / 12 // $190,000 * 0.8% / 12 = $126.66 (or $1,520/year). The 0.8% is coming from research as a rule of thumb that PMI costs roughly 0.5% - 1% of total loan.
@@ -38,10 +39,11 @@ function calculate(e) {
         let newMonthlyTotal;
         if (percentDown < 0.2) {
           newMonthlyTotal = PMI + pmt; // If down payment is less then 20%, then you pay PMI, so your new monthly payment will be = $126 + $801 = $927
+          document.getElementById("pmi").innerHTML = "$ " + PMI.toLocaleString(undefined, {maximumFractionDigits: 0});
         } else {
           newMonthlyTotal = pmt;
+          document.getElementById("pmi").innerHTML = "$0";
         }
-        document.getElementById("pmi").innerHTML = "$ " + PMI.toLocaleString(undefined, {maximumFractionDigits: 0});
         document.getElementById("pmiPlusMonthlyPayment").innerHTML = "$ " + newMonthlyTotal.toLocaleString(undefined, {maximumFractionDigits: 0});
     }    
 
