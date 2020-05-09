@@ -2,7 +2,7 @@
 
 Written in JS and Bulma CSS.
 
-<a href="https://romariojashari.github.io/mortgagecalculator/" target="blank">View Live</a>
+<a href="https://romariojashari.github.io/mortgagecalculator/" target="_blank">View Live</a>
 
 ![Screenshot](demo.png)
 
