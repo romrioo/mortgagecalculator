@@ -24,10 +24,12 @@ function calculate(e) {
     
     // Calculate Just Interest
     const justInterest = totalPayment - p; // $288,360 - $190,000 = $98,360
+    const percentInterestPaid = justInterest/totalPayment*100;
+    document.getElementById("percentinterestpaid").innerHTML = percentInterestPaid.toFixed(0) + " %";
 
     // Calculate Percent Down or Equity
     const percentDown = downPayment / purchasePrice; // $0 divided by $190,000 = $0
-    document.getElementById("downP").innerHTML = (percentDown*100).toFixed() + " %";
+    document.getElementById("downP").innerHTML = (percentDown*100).toFixed(1) + " %";
     document.getElementById("twentyPercentDown").innerHTML = "$" + (purchasePrice*0.2).toLocaleString(undefined, {maximumFractionDigits: 0});
     
     // Calculate Private Mortgage Insurance = PMI
@@ -51,10 +53,10 @@ function calculate(e) {
 
     // Show Results
     document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
-    document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("loanAmount").innerHTML = "$" + p.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("justInterest").innerHTML = "$" + justInterest.toLocaleString(undefined, {maximumFractionDigits: 0});
+    document.getElementById("payOffTime").innerHTML = n + " months or " + n/12 + " years."
 
     let currentBalance = p; // p is the principle which is the amount of money borrowed. 
     let paymentCounter = 1;
@@ -69,8 +71,16 @@ function calculate(e) {
         towardsEquity += towardsPrinciple; // towardsEquity = $0 + $475
         percentEquity = towardsEquity/purchasePrice*100;
         
+        let rowNr = 1;
+        for (rowNr; rowNr <= paymentCounter; rowNr++) {
+            if (percentEquity => 22) {
+                console.log(rowNr);
+            }
+        }
+        
+        
         // Display row
-        let newRow = document.getElementById('tbody').insertRow();
+        let newRow = document.getElementById('regularTabletBody').insertRow(); //additionalTabletBody for additional payments table..
         newRow.innerHTML = "<td><center>"+paymentCounter.toLocaleString()+"</center></td><td><center>$"+
         pmt.toLocaleString(undefined, {minimumFractionDigits: 2,maximumFractionDigits: 2})+"</center></td><td><center>$"+
         towardsInterest.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>$"+
@@ -80,7 +90,6 @@ function calculate(e) {
         currentBalance.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td>";
 
         paymentCounter++;
-
     }  
 
     e.preventDefault();
@@ -91,9 +100,19 @@ function calculate(e) {
 // let newRow=document.getElementById('tbody').insertRow();
 // newRow.innerHTML = "<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>";
 
+document.getElementById("amortizationTable1").style.display = 'none';
+document.getElementById("amortizationTable2").style.display = 'none';
 
-function hideDisplayHide() {
-    let x = document.getElementById("amortizationTable");
+function hideDisplayHide1() {
+    let x = document.getElementById("amortizationTable1");
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
+        }
+}
+function hideDisplayHide2() {
+    let x = document.getElementById("amortizationTable2");
     if (x.style.display === 'none') {
         x.style.display = 'block';
         } else {
@@ -101,12 +120,13 @@ function hideDisplayHide() {
         }
 }
 
+
+
 // Function to delete rows in table. Called when clicking button. 
 function clearTable() {
-    let oldTable = document.getElementById('tbody');;
+    let oldTable = document.getElementById('tbody');
     while (oldTable.firstChild) { // While the first child (first row ) of the tbody is True then Remove. 
         // This will remove all children within tbody which in this case are <td> elements.
         oldTable.removeChild(oldTable.firstChild);
         }
 }
-

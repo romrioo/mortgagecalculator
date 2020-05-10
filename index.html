@@ -45,7 +45,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="purchasePrice" placeholder="Purchase Price">
+                          <input class="input" type="number" id="purchasePrice" value="250000" placeholder="Purchase Price">
                             <span class="icon is-left">
                               <i class="fa fa-dollar-sign"></i>
                             </span>
@@ -73,7 +73,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="downPayment" placeholder="Down Payment">
+                          <input class="input" type="number" id="downPayment" value="15000" placeholder="Down Payment">
                             <span class="icon is-left">
                               <i class="fa fa-dollar-sign"></i>
                             </span>
@@ -102,7 +102,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="interestRate" placeholder="Interest Rate">
+                          <input class="input" type="number" id="interestRate" value="3" placeholder="Interest Rate">
                             <span class="icon is-left">
                               <i class="fa fa-percentage"i></i>
                             </span>
@@ -131,7 +131,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="loanTerm" placeholder="Loan Term">
+                          <input class="input" type="number" id="loanTerm" value="30" placeholder="Loan Term">
                             <p class="help has-text-right">(in years)</p>
                             <span class="icon is-left">
                               <i class="fa fa-calendar"i></i>
@@ -158,10 +158,9 @@
   </section>
 
   <!-- Results Section -->
-  <section class="section">
+  <section class="section is-paddingless">
     <div class="container">
       <div class="content">
-        <h2 class="subtitle is-3 has-text-centered">Results</h2>
         <p class="has-text-centered">Results proof checked with multiple outside sources.</p>
       </div>
       <div class="columns is-multiline is-centered">
@@ -191,30 +190,30 @@
         </div>
       </div>
       <div class="columns is-centered">
-        <div class="column is-5">
+        <div class="column is-6 has-text-right">
           <h2 class="subtitle is-5 has-text-centered">Regular Payments</h2>
           <div class="box is-shadowless">
-            <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
+            <table class="table is-bordered is-hoverable is-narrow is-fullwidth has-text-right">
               <tbody>
                 <tr>
-                  <th>Payoff Time (months)</th>
-                  <td>coming soon</td>
+                  <th>Payoff Time</th>
+                  <td><p id="payOffTime" class="is-3">#</p></td>
                 </tr>
                 <tr>
                   <th>Sum Interest</th>
                   <td><p id="justInterest" class="is-3">$</p></td>
                 </tr>
                 <tr>
-                  <th>Percent Interest Paid</th>
-                  <td>coming soon</td>
-                </tr>
-                <tr>
                   <th>Total Paid</th>
                   <td><p id="totalPayment" class="is-3">$</p></td>
                 </tr>
                 <tr>
+                  <th>Percent Interest Paid</th>
+                  <td><p id="percentinterestpaid" class="is-3">%</p></td>
+                </tr>
+                <tr>
                   <th>Will Reach 22% Equity at<p class="help is-size-7 has-text-weight-normal has-text-grey">At 22% equity, you are no longer liable for PMI payments.</p></th>
-                  <td>coming soon</td>
+                  <td><p id="twentyTwo" class="is-3"># month</p></td>
                 </tr>
                 <tr>
                   <th>Will have a monthly PMI of (approximately)<p class="help is-size-7 has-text-weight-normal has-text-grey">PMI = 0.5%-1% of total loan amount. This calculator uses 0.8%.</p></th>
@@ -226,6 +225,9 @@
                 </tr>
               </tbody>
             </table>
+            <div class="buttons is-centered">
+              <button onclick="hideDisplayHide1()" class="button is-info is-light">Show/Hide Amortization Schedule</button>
+            </div>
           </div>
         </div>
         <div class="column is-5">
@@ -275,12 +277,15 @@
                 </tr>
               </tbody>
             </table>
+            <div class="buttons is-centered">
+              <button onclick="hideDisplayHide2()" class="button is-info is-light">Show/Hide Amortization Schedule</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="columns is-centered">
         <div class="column is-7">
-          <div id="amortizationTable" class="section">
+          <div id="amortizationTable1" class="section">
             <h2 class="title is-5 has-text-centered">Regular Payment Amortization Schedule</h2>            
             <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
               <thead id="thead">
@@ -294,14 +299,14 @@
                   <th><abbr>Balance</abbr></th>
                 </tr>
               </thead>
-              <tbody id="tbody" class="justify-content: center">
+              <tbody id="regularTabletBody" class="justify-content: center">
                 <!--Generate table from JavaScript.-->
               </tbody> 
             </table>
           </div>
         </div>
         <div class="column is-7">
-          <div id="####" class="section">
+          <div id="amortizationTable2" class="section">
             <h2 class="title is-5 has-text-centered">Additional Payment Amortization Schedule</h2>            
             <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
               <thead id="thead">
@@ -315,7 +320,7 @@
                   <th><abbr>Balance</abbr></th>
                 </tr>
               </thead>
-              <tbody id="tbody" class="justify-content: center">
+              <tbody id="additionalTabletBody" class="justify-content: center">
                 <!--Generate table from JavaScript.-->
               </tbody> 
             </table>
