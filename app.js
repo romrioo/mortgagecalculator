@@ -22,11 +22,13 @@ function calculate(e) {
     // Compute Total Payment
     const totalPayment = pmt * n; // Total payback, includes interest. = 801 * 360 = $288,360 
     
-    // Calculate Just Interest
+    // Calculate Interest
     const justInterest = totalPayment - p; // $288,360 - $190,000 = $98,360
+    document.getElementById("justInterest").innerHTML = "$" + justInterest.toLocaleString(undefined, {maximumFractionDigits: 0});
+
     const percentInterestPaid = justInterest/totalPayment*100;
     document.getElementById("percentinterestpaid").innerHTML = percentInterestPaid.toFixed(0) + " %";
-
+    
     // Calculate Percent Down or Equity
     const percentDown = downPayment / purchasePrice; // $0 divided by $190,000 = $0
     document.getElementById("downP").innerHTML = (percentDown*100).toFixed(1) + " %";
@@ -52,16 +54,27 @@ function calculate(e) {
     pmtAfterPMI(percentDown) // Calling funciton otherwise it won't run. 
 
     // Show Results
+    document.getElementById("justPrincipal").innerHTML = "$" + p.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("monthlyPayment").innerHTML = "$" + pmt.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("loanAmount").innerHTML = "$" + p.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {maximumFractionDigits: 0});
-    document.getElementById("justInterest").innerHTML = "$" + justInterest.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("payOffTime").innerHTML = n + " months or " + n/12 + " years."
 
     let currentBalance = p; // p is the principle which is the amount of money borrowed. 
     let paymentCounter = 1;
     let towardsEquity = downPayment;
 
+    // Find at what month 22% equity occurs. 
+    let equityArray = []; 
+    
+    if (equityArray.length = n) {
+       console.log("hello");
+       console.log(equityArray.length);
+       const isLargeNumber = (element) => element > 13;
+       console.log(equityArray.findIndex(isLargeNumber));
+       //document.getElementById("twentyTwo").innerHTML = index22 + " months";
+    }
+    
     // Example: Loan = $190,000, $0 down payment, 3% rate, 30 year loan term.
 
     while(currentBalance > 0) {
@@ -70,14 +83,7 @@ function calculate(e) {
         currentBalance -= towardsPrinciple; // currentBalance = $ 190,000 - $326 = $189, 674 new loan balance AKA new principle balance. currentBalance is the mount of money you still owe.
         towardsEquity += towardsPrinciple; // towardsEquity = $0 + $475
         percentEquity = towardsEquity/purchasePrice*100;
-        
-        let rowNr = 1;
-        for (rowNr; rowNr <= paymentCounter; rowNr++) {
-            if (percentEquity => 22) {
-                console.log(rowNr);
-            }
-        }
-        
+        equityArray.push(percentEquity);
         
         // Display row
         let newRow = document.getElementById('regularTabletBody').insertRow(); //additionalTabletBody for additional payments table..
@@ -86,7 +92,7 @@ function calculate(e) {
         towardsInterest.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>$"+
         towardsPrinciple.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>$"+
         towardsEquity.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td><td><center>"+
-        percentEquity.toLocaleString(undefined, {maximumFractionDigits: 0})+" %</center></td><td><center>$"+
+        percentEquity.toLocaleString(undefined, {maximumFractionDigits: 1})+" %</center></td><td><center>$"+
         currentBalance.toLocaleString(undefined, {maximumFractionDigits: 0})+"</center></td>";
 
         paymentCounter++;
@@ -124,7 +130,7 @@ function hideDisplayHide2() {
 
 // Function to delete rows in table. Called when clicking button. 
 function clearTable() {
-    let oldTable = document.getElementById('tbody');
+    let oldTable = document.getElementById('regularTabletBody');
     while (oldTable.firstChild) { // While the first child (first row ) of the tbody is True then Remove. 
         // This will remove all children within tbody which in this case are <td> elements.
         oldTable.removeChild(oldTable.firstChild);
