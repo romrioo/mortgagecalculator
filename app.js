@@ -43,10 +43,10 @@ function calculate(e) {
         let newMonthlyTotal;
         if (percentDown < 0.2) {
           newMonthlyTotal = PMI + pmt; // If down payment is less then 20%, then you pay PMI, so your new monthly payment will be = $126 + $801 = $927
-          document.getElementById("pmi").innerHTML = "$ " + PMI.toLocaleString(undefined, {maximumFractionDigits: 0});
+          document.getElementById("pmi").innerHTML = "$ " + PMI.toLocaleString(undefined, {maximumFractionDigits: 0}) + "/month";
         } else {
           newMonthlyTotal = pmt;
-          document.getElementById("pmi").innerHTML = "$0";
+          document.getElementById("pmi").innerHTML = "No PMI";
         }
         document.getElementById("pmiPlusMonthlyPayment").innerHTML = "$ " + newMonthlyTotal.toLocaleString(undefined, {maximumFractionDigits: 0});
     }    
