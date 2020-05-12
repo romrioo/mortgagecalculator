@@ -22,7 +22,7 @@
   <section class="section is-flex-mobile">
     <div class="container">
       <div class="content">
-       <h1 class="title has-text-centered">Simple Mortgage Calculator</h1>
+       <h1 class="title is-size-1 has-text-centered">Simple Mortgage Calculator</h1>
        <p class="has-text-centered">The internet's most simple, yet profound mortgage calculator!</p>
       </div>
       <div class="columns is-centered is-flex is-flex-mobile">
@@ -161,6 +161,7 @@
   <section class="section is-paddingless">
     <div class="container">
       <div class="content">
+        <h1 class="has-text-centered">Results</h1>
         <p class="has-text-centered">Results proof checked with multiple outside sources.</p>
       </div>
       <div class="columns is-multiline is-centered">
@@ -191,7 +192,7 @@
       </div>
       <div class="columns is-centered">
         <div class="column is-6 has-text-right">
-          <h2 class="subtitle is-5 has-text-centered">Regular Payments</h2>
+          <h2 class="subtitle is-5 has-text-centered"></h2>
           <div class="box is-shadowless">
             <table class="table is-bordered is-hoverable is-narrow is-fullwidth has-text-right">
               <tbody>
@@ -220,8 +221,8 @@
                   <td><p id="twentyTwo" class="is-3"># month</p></td>
                 </tr>
                 <tr>
-                  <th>Will have a monthly PMI of (approximately)<p class="help is-size-7 has-text-weight-normal has-text-grey">PMI = 0.5%-1% of total loan amount. This calculator uses 0.8%.</p></th>
-                  <td><span id="pmi">coming soon</span>/month</td>
+                  <th>PMI responsible until you reach 22% (approximate) <p class="help is-size-7 has-text-weight-normal has-text-grey">PMI = 0.5%-1% of total loan amount. This calculator uses 0.8%.</p></th>
+                  <td><span id="pmi">#</span>/month</td>
                 </tr>
                 <tr class="is-selected has-background-grey-dark">
                   <th>Total Monthly Payment</th>
@@ -234,7 +235,7 @@
             </div>
           </div>
         </div>
-        <div class="column is-5">
+        <!--<div class="column is-5">
           <h2 class="subtitle is-5 has-text-centered">Additional Payments</h2>
           <div class="box is-shadowless">
             <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
@@ -284,11 +285,11 @@
             <div class="buttons is-centered">
               <button onclick="hideDisplayHide2()" class="button is-info is-light">Show/Hide Amortization Schedule</button>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
       <div class="columns is-centered">
-        <div class="column is-7">
+        <div class="column is-5">
           <div id="amortizationTable1" class="section">
             <h2 class="title is-5 has-text-centered">Regular Payment Amortization Schedule</h2>            
             <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
@@ -309,7 +310,7 @@
             </table>
           </div>
         </div>
-        <div class="column is-7">
+        <!--<div class="column is-7">
           <div id="amortizationTable2" class="section">
             <h2 class="title is-5 has-text-centered">Additional Payment Amortization Schedule</h2>            
             <table id="loandata" class="table is-fullwidth is-narrow is-bordered table is-hoverable">
@@ -325,11 +326,11 @@
                 </tr>
               </thead>
               <tbody id="additionalTabletBody" class="justify-content: center">
-                <!--Generate table from JavaScript.-->
+                <!--Generate table from JavaScript.
               </tbody> 
             </table>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </section>

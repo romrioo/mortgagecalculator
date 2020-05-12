@@ -60,20 +60,12 @@ function calculate(e) {
     document.getElementById("totalPayment").innerHTML = "$" + totalPayment.toLocaleString(undefined, {maximumFractionDigits: 0});
     document.getElementById("payOffTime").innerHTML = n + " months or " + n/12 + " years."
 
+    // Create array to find 22% equity based on imput parameters
+    let equityArray = []; 
+
     let currentBalance = p; // p is the principle which is the amount of money borrowed. 
     let paymentCounter = 1;
     let towardsEquity = downPayment;
-
-    // Find at what month 22% equity occurs. 
-    let equityArray = []; 
-    
-    if (equityArray.length = n) {
-       console.log("hello");
-       console.log(equityArray.length);
-       const isLargeNumber = (element) => element > 13;
-       console.log(equityArray.findIndex(isLargeNumber));
-       //document.getElementById("twentyTwo").innerHTML = index22 + " months";
-    }
     
     // Example: Loan = $190,000, $0 down payment, 3% rate, 30 year loan term.
 
@@ -97,7 +89,18 @@ function calculate(e) {
 
         paymentCounter++;
     }  
-
+    
+    // Finds how many months it takes to reach 22% equity.
+    if (equityArray.length = 360) {
+      // equityArray.forEach(function (e) {console.log(e)});
+      let index = equityArray.findIndex(nr => nr >= 22);
+      if (percentDown < 0.2 ) {
+        document.getElementById('twentyTwo').innerHTML = Math.floor(index/12) + " years and "  + (index%12) + " months.";
+      } else {
+        document.getElementById('twentyTwo').innerHTML = "No PMI";
+      }
+    }
+    
     e.preventDefault();
 }
 
@@ -125,8 +128,6 @@ function hideDisplayHide2() {
             x.style.display = 'none';
         }
 }
-
-
 
 // Function to delete rows in table. Called when clicking button. 
 function clearTable() {
