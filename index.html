@@ -45,7 +45,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="purchasePrice" value="250000" placeholder="Purchase Price">
+                          <input class="input" type="number" min="0" id="purchasePrice" value="" placeholder="Purchase Price" required>
                             <span class="icon is-left">
                               <i class="fa fa-dollar-sign"></i>
                             </span>
@@ -73,7 +73,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="downPayment" value="15000" placeholder="Down Payment">
+                          <input class="input" type="number" min="0" id="downPayment" value="" placeholder="Down Payment" required>
                             <span class="icon is-left">
                               <i class="fa fa-dollar-sign"></i>
                             </span>
@@ -102,7 +102,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="interestRate" value="3" placeholder="Interest Rate">
+                          <input class="input" type="number" step="0.01" min="0" id="interestRate" value="3.5" placeholder="Interest Rate" required>
                             <span class="icon is-left">
                               <i class="fa fa-percentage"i></i>
                             </span>
@@ -131,7 +131,7 @@
                     <div class="level-item">
                       <div class="field">
                         <div class="control has-icons-left has-icons-right ">
-                          <input class="input" type="number" id="loanTerm" value="30" placeholder="Loan Term">
+                          <input class="input" type="number" min="0" id="loanTerm" value="30" placeholder="Loan Term" required> 
                             <p class="help has-text-right">(in years)</p>
                             <span class="icon is-left">
                               <i class="fa fa-calendar"i></i>
@@ -146,6 +146,7 @@
                 </div>
                 <div class="field is-grouped is-grouped-centered ">
                   <div class="control">
+                    <button type="reset" value="Clear" class="button is-inverted has-background-white has-text-black is-medium "> Reset </button>
                     <button id="crunch" onclick="clearTable();" class="button is-inverted has-background-white has-text-black is-medium ">Crunch the numbers!</button>
                   </div>
                 </div>
